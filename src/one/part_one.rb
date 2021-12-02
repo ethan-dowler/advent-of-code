@@ -3,7 +3,7 @@
 require 'csv'
 
 # 🍎 TIL __dir__ is a reference to the directory of the file that's running!
-depths = CSV.parse(File.read("#{__dir__}/../depths.csv")).flatten.map(&:to_i)
+depths = CSV.parse(File.read("#{__dir__}/depths.csv")).flatten.map(&:to_i)
 
 number_of_increases = 0
 
