@@ -1,17 +1,12 @@
 require 'csv'
+require_relative "report"
 
-NUMBER_OF_COLUMNS = 12.freeze
+binary_list = CSV.read("#{__dir__}/diagnostic_report.csv").flatten
 
-binary_numbers = CSV.read("#{__dir__}/diagnostic_report.csv").flatten
+report = Report.new(binary_list)
 
-columns = 
-  NUMBER_OF_COLUMNS.times.map do |column_number|
-    binary_numbers.map do |binary_number|
-      binary_number[column_number]
-    end
-  end
-
-column_tallies = columns.map(&:tally)
+column_tallies = report.columns.map(&:tally)
+# TODO: create smart tally class!
 
 gamma_rate =
   column_tallies.reduce("") do |rate_string, column_tally|
@@ -34,3 +29,4 @@ epsilon_rate =
   end
 
 puts gamma_rate.to_i(2) * epsilon_rate.to_i(2)
+# => 1025636
