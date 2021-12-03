@@ -2,7 +2,7 @@ require 'csv'
 require_relative 'vector'
 require_relative 'journey'
 
-vector_inputs = CSV.parse(File.read("#{__dir__}/commands.csv")).flatten
+vector_inputs = CSV.read("#{__dir__}/commands.csv").flatten
 
 vectors = vector_inputs.map do |input|
   Vector.new(input)

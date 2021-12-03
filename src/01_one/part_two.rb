@@ -2,7 +2,7 @@
 
 require 'csv'
 
-depths = CSV.parse(File.read("#{__dir__}/depths.csv")).flatten.compact.map(&:to_i)
+depths = CSV.read("#{__dir__}/depths.csv").flatten.compact.map(&:to_i)
 
 number_of_increases = 0
 
