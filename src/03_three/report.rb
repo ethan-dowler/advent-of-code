@@ -11,5 +11,6 @@ class Report
           binary_number[column_number]
         end
       end
+    # @columns = rows.map { |row| row.split("") }.transpose
   end
 end
