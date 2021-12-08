@@ -14,4 +14,23 @@ module Bingo
 
     nil
   end
+
+  def self.find_losing_score(boards)
+    losing_board = nil
+    NUMBERS.each do |number|
+      boards.each do |board|
+        board.mark(number)
+      end
+
+      losing_boards = boards.reject(&:winning?)
+      if losing_boards.length == 1 && losing_board.nil?
+        losing_board = losing_boards.first
+      elsif losing_boards.empty?
+        losing_board.mark(number)
+        return losing_board.score(number)
+      end
+    end
+
+    nil
+  end
 end

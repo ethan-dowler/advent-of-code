@@ -26,7 +26,7 @@ module Bingo
     end
 
     def score(winning_number)
-      return 0 unless winning?
+      raise CannotScoreError, "Cannot score board because it is not winning!" unless winning?
 
       unmarked_square_total =
         unmarked_squares.reduce(0) do |total, square|
@@ -36,7 +36,7 @@ module Bingo
       unmarked_square_total * winning_number
     end
 
-  private
+  # private
 
     def any_rows_winning?
       rows.any? do |row|
@@ -70,5 +70,7 @@ module Bingo
         end
       end
     end
+
+    class CannotScoreError < RuntimeError; end
   end
 end
