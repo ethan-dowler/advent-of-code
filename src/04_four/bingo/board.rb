@@ -36,7 +36,7 @@ module Bingo
       unmarked_square_total * winning_number
     end
 
-  # private
+  private
 
     def any_rows_winning?
       rows.any? do |row|
