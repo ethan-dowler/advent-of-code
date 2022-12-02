@@ -1,9 +1,8 @@
 # https://adventofcode.com/2022/day/1
 
-require "csv"
 require_relative "elf"
 
-calories_file = File.read("#{__dir__}/calories.csv")
+calories_file = File.read("#{__dir__}/calories.txt")
 
 calories_strings = calories_file.split("\n\n")
 
