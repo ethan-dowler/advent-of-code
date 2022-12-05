@@ -16,11 +16,17 @@ require_relative "item"
 File.open("#{__dir__}/rucksacks.txt", "r") do |file|
   priority =
     file.each_line.reduce(0) do |total, line|
-      halfway_divider_index = (line.length / 2) - 1
-      compartment_1 = line[..halfway_divider_index].split("")
-      compartment_2 = line[halfway_divider_index..].split("")
+      line = line.chomp
+
+      first_half_end = (line.length / 2) - 1
+      second_half_begin = (line.length / 2)
+
+      compartment_1 = line[..first_half_end].split("")
+      compartment_2 = line[second_half_begin...].split("")
+      
       shared_characters = compartment_1 & compartment_2
       duplicate = shared_characters.first
+      
       total + Item.new(duplicate).priority
     end
 
@@ -28,5 +34,3 @@ File.open("#{__dir__}/rucksacks.txt", "r") do |file|
 
   binding.irb
 end
-
-# first wrong guess: 8284
