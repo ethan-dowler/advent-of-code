@@ -22,7 +22,7 @@ File.open("#{__dir__}/rucksacks.txt", "r") do |file|
       second_half_begin = (line.length / 2)
 
       compartment_1 = line[..first_half_end].split("")
-      compartment_2 = line[second_half_begin...].split("")
+      compartment_2 = line[second_half_begin..].split("")
       
       shared_characters = compartment_1 & compartment_2
       duplicate = shared_characters.first
